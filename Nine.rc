@@ -1,0 +1,71 @@
+#define IDR_VERSION			1
+#define ID_ACCEL			14		// "Горячие" клавиши (акселераторы)
+#define IDR_ICON			500
+#define IDR_MENU			10000	// Основное меню
+#define IDM_GAME_NEW		10001
+#define IDM_FILE_EXIT		10002
+#define IDM_HELP_CONTENTS	10101
+#define IDM_HELP_ABOUT		10102
+#define IDS_ABOUT			20001
+#define IDS_NEWGAMEWARNING	20002
+#define IDS_WINDOWTITLE		20003
+
+// Строки в программе
+STRINGTABLE
+BEGIN
+	IDS_ABOUT "Карточная игра «Девятка»"
+	IDS_NEWGAMEWARNING "Игра уже идёт\r\nНачать заново?"
+	IDS_WINDOWTITLE "Девятка"
+END
+
+// Меню
+IDR_MENU MENU
+BEGIN
+  POPUP "&Игра"
+  BEGIN
+    MENUITEM "Новая &игра\tCtrl+N", IDM_GAME_NEW
+    MENUITEM "В&ыход", IDM_FILE_EXIT
+  END
+  POPUP "&Справка"
+  BEGIN
+	MENUITEM "&Вызов справки", IDM_HELP_CONTENTS
+	MENUITEM SEPARATOR
+    MENUITEM "&О программе", IDM_HELP_ABOUT
+  END
+END
+
+// Комбинации клавиш
+ID_ACCEL ACCELERATORS
+BEGIN
+    "N", IDM_GAME_NEW, CONTROL, VIRTKEY
+END
+
+
+IDR_VERSION VERSIONINFO
+FILEVERSION 0,0,0,1
+PRODUCTVERSION 0,0,0,1
+FILEOS 0x00000004
+FILETYPE 0x00000001
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "FFFF04B0"
+    BEGIN
+      VALUE "FileVersion", "0.0.0.1\0"
+      VALUE "ProductVersion", "0.0.0.1\0"
+      VALUE "CompanyName", "Корпораци Сети\0"
+      VALUE "FileDescription", "Карточная игра «Девятка»\0"
+      VALUE "InternalName", "Девятка\0"
+      VALUE "LegalCopyright", "(c) Корпорация Сети. Все права сохранены.\0"
+      VALUE "LegalTrademarks", "Корпорация Сети\0"
+      VALUE "OriginalFilename", "Девятка\0"
+      VALUE "ProductName", "Карточная игра «Девятка»\0"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0xFFFF, 0x04B0
+  END
+END
+
+IDR_ICON ICON DISCARDABLE "Nine.ico"
