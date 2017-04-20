@@ -71,24 +71,20 @@ Function EntryPoint Alias "EntryPoint"()As Integer
 	
 	Dim wMsg As MSG = Any
 	Dim bRet As Integer = GetMessage(@wMsg, NULL, 0, 0)
-	Do
-		Select Case bRet
-			Case -1
-				' Ошибка
-				Dim ErrorCode As Integer = GetLastError()
-				Dim Buffer As WString * 100 = Any
-				itow(ErrorCode, @Buffer, 10)
-				MessageBox(0, @Buffer, @"Ошибка", MB_ICONERROR)
-				Exit Do
-			Case 0
-				' Выйти
-				Exit Do
-			Case Else
-				' If TranslateAccelerator(hWndMain, hAccel, @wMsg) = 0 Then
-					TranslateMessage(@wMsg)
-					DispatchMessage(@wMsg)
-				' End If
-		End Select
+	Do While bRet <> 0
+		If bRet = -1 Then
+			' Ошибка
+			Dim ErrorCode As Integer = GetLastError()
+			Dim Buffer As WString * 100 = Any
+			itow(ErrorCode, @Buffer, 10)
+			MessageBox(0, @Buffer, @"Ошибка", MB_ICONERROR)
+			Exit Do
+		Else
+			' If TranslateAccelerator(hWndMain, hAccel, @wMsg) = 0 Then
+				TranslateMessage(@wMsg)
+				DispatchMessage(@wMsg)
+			' End If
+		End If
 		bRet = GetMessage(@wMsg, NULL, 0, 0)
 	Loop
 	
