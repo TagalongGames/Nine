@@ -1,18 +1,9 @@
 ﻿#include once "Nine.bi"
 #include once "WndProc.bi"
-
-#define IDR_ICON			500
-#define IDR_MENU			10000
-#define IDS_ABOUT			20001
-#define IDS_NEWGAMEWARNING	20002
-#define IDS_WINDOWTITLE		20003
+#include once "Nine.rh"
+#include once "IntegerToWString.bi"
 
 Const MainWindowClassName = "Девятка"
-
-Declare Function itow cdecl Alias "_itow" (ByVal Value As Integer, ByVal src As WString Ptr, ByVal radix As Integer)As WString Ptr
-Declare Function ltow cdecl Alias "_ltow" (ByVal Value As Long, ByVal src As WString Ptr, ByVal radix As Integer)As WString Ptr
-Declare Function wtoi cdecl Alias "_wtoi" (ByVal src As WString Ptr)As Integer
-Declare Function wtol cdecl Alias "_wtol" (ByVal src As WString Ptr)As Long
 
 Dim Shared hInst As HMODULE
 
@@ -35,7 +26,7 @@ Function EntryPoint Alias "EntryPoint"()As Integer
 		.hIcon         = LoadIcon(hInst, Cast(WString Ptr, IDR_ICON))
 		.hCursor       = LoadCursor(NULL, IDC_ARROW)
 		.hbrBackground = GetStockObject(WHITE_BRUSH)
-		.lpszMenuName  = Cast(WString Ptr, IDR_MENU)
+		.lpszMenuName  = Cast(WString Ptr, IDM_MENU)
 		.lpszClassName = @MainWindowClassName
 		.hIconSm = LoadImage(hInst, _
 			MAKEINTRESOURCE(5), _
@@ -89,6 +80,8 @@ Function EntryPoint Alias "EntryPoint"()As Integer
 	Loop
 	
 #ifdef withoutrtl
-	Return 0
+	Return wMsg.WPARAM
 End Function
+#else
+	End(wMsg.WPARAM)
 #endif

@@ -24,8 +24,6 @@ Dim Shared mintWidth As Integer
 Dim Shared mintHeight As Integer
 
 
-' Флаг того, что игра идёт
-Common Shared GameIsRunning As Integer
 ' Банк
 'Common Shared PlayerBank As Bank Ptr
 

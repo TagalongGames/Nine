@@ -1,17 +1,4 @@
-#define IDR_VERSION	1
-
-#define ID_ACCEL	14
-#define IDR_ICON	500
-
-#define IDM_MENU	10000
-#define IDM_GAME_NEW	10001
-#define IDM_FILE_EXIT	10002
-#define IDM_HELP_CONTENTS	10101
-#define IDM_HELP_ABOUT	10102
-
-#define IDS_ABOUT	20001
-#define IDS_NEWGAMEWARNING	20002
-#define IDS_WINDOWTITLE	20003
+#include "Nine.rh"
 
 // Строки в программе
 STRINGTABLE
