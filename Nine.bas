@@ -15,6 +15,8 @@ Function EntryPoint Alias "EntryPoint"()As Integer
 	Dim NineWindowTitle As WString * 256 = Any
 	LoadString(hInst, IDS_WINDOWTITLE, @NineWindowTitle, 255)
 	
+	Dim hAccel As HACCEL = LoadAccelerators(hInst, Cast(WString Ptr, ID_ACCEL))
+	
 	Dim wcls As WNDCLASSEX = Any
 	With wcls
 		.cbSize = SizeOf(WNDCLASSEX)
@@ -71,10 +73,10 @@ Function EntryPoint Alias "EntryPoint"()As Integer
 			MessageBox(0, @Buffer, @"Ошибка", MB_ICONERROR)
 			Exit Do
 		Else
-			' If TranslateAccelerator(hWndMain, hAccel, @wMsg) = 0 Then
+			If TranslateAccelerator(hWndMain, hAccel, @wMsg) = 0 Then
 				TranslateMessage(@wMsg)
 				DispatchMessage(@wMsg)
-			' End If
+			End If
 		End If
 		bRet = GetMessage(@wMsg, NULL, 0, 0)
 	Loop
