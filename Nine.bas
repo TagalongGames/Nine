@@ -59,7 +59,8 @@ Function EntryPoint Alias "EntryPoint"()As Integer
 		hInst, _
 		NULL)
 	
-	ShowWindow(hWndMain, SW_NORMAL)
+	' ShowWindow(hWndMain, SW_NORMAL)
+	ShowWindow(hWndMain, SW_MAXIMIZE)
 	UpdateWindow(hWndMain)
 	
 	Dim wMsg As MSG = Any
