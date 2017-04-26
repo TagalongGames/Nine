@@ -14,6 +14,8 @@ BEGIN
 	POPUP "&Игра"
 	BEGIN
 		MENUITEM "Новая &игра\tCtrl+N", IDM_GAME_NEW
+		MENUITEM "&Сетевой режим", IDM_GAME_NEW_NETWORK
+		MENUITEM SEPARATOR
 		MENUITEM "В&ыход", IDM_FILE_EXIT
 	END
 	POPUP "&Справка"
