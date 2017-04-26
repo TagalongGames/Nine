@@ -2,6 +2,7 @@
 #define unicode
 #endif
 #include once "windows.bi"
+#inclib "cards"
 
 ' Виндовые функции работы с картами
 
