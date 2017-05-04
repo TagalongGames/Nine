@@ -12,14 +12,20 @@ Function EntryPoint Alias "EntryPoint"()As Integer
 #endif
 	hInst = GetModuleHandle(0)
 	
-	' Инициализация новых элементов управления
-	Dim ctl As INITCOMMONCONTROLSEX = Any
-	ctl.dwSize = SizeOf(INITCOMMONCONTROLSEX)
-	ctl.dwICC = ICC_ANIMATE_CLASS Or ICC_BAR_CLASSES Or ICC_COOL_CLASSES Or ICC_DATE_CLASSES Or ICC_HOTKEY_CLASS Or ICC_INTERNET_CLASSES Or ICC_LINK_CLASS Or ICC_LISTVIEW_CLASSES Or ICC_NATIVEFNTCTL_CLASS Or ICC_PAGESCROLLER_CLASS Or ICC_PROGRESS_CLASS Or ICC_STANDARD_CLASSES Or ICC_TAB_CLASSES Or ICC_TREEVIEW_CLASSES Or ICC_UPDOWN_CLASS Or ICC_USEREX_CLASSES Or ICC_WIN95_CLASSES
-	InitCommonControlsEx(@ctl)
-	
 	Dim NineWindowTitle As WString * 256 = Any
 	LoadString(hInst, IDS_WINDOWTITLE, @NineWindowTitle, 255)
+	
+	Dim icc As INITCOMMONCONTROLSEX = Any
+	icc.dwSize = SizeOf(INITCOMMONCONTROLSEX)
+	icc.dwICC = ICC_ANIMATE_CLASS Or ICC_BAR_CLASSES Or ICC_COOL_CLASSES Or ICC_DATE_CLASSES Or ICC_HOTKEY_CLASS Or ICC_INTERNET_CLASSES Or ICC_LINK_CLASS Or ICC_LISTVIEW_CLASSES Or ICC_NATIVEFNTCTL_CLASS Or ICC_PAGESCROLLER_CLASS Or ICC_PROGRESS_CLASS Or ICC_STANDARD_CLASSES Or ICC_TAB_CLASSES Or ICC_TREEVIEW_CLASSES Or ICC_UPDOWN_CLASS Or ICC_USEREX_CLASSES Or ICC_WIN95_CLASSES
+	If InitCommonControlsEx(@icc) = False Then
+		MessageBox(0, "Failed to register InitCommonControlsEx", @NineWindowTitle, MB_ICONERROR)
+#ifdef withoutrtl
+		Return 1
+#else
+		End(1)
+#endif
+	End If
 	
 	Dim hAccel As HACCEL = LoadAccelerators(hInst, Cast(WString Ptr, ID_ACCEL))
 	
@@ -45,7 +51,7 @@ Function EntryPoint Alias "EntryPoint"()As Integer
 	End With
 	
 	If RegisterClassEx(@wcls) = FALSE Then
-		MessageBox(0, "Failed to register wcls", @NineWindowTitle, MB_ICONERROR)
+		MessageBox(0, "Failed to register WNDCLASSEX", @NineWindowTitle, MB_ICONERROR)
 #ifdef withoutrtl
 		Return 1
 #else
@@ -76,7 +82,7 @@ Function EntryPoint Alias "EntryPoint"()As Integer
 			Dim ErrorCode As Integer = GetLastError()
 			Dim Buffer As WString * 100 = Any
 			itow(ErrorCode, @Buffer, 10)
-			MessageBox(0, @Buffer, @"Ошибка", MB_ICONERROR)
+			MessageBox(0, @Buffer, @"Ошибка в функции GetMessage", MB_ICONERROR)
 			Exit Do
 		Else
 			If TranslateAccelerator(hWndMain, hAccel, @wMsg) = 0 Then
