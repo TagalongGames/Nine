@@ -12,6 +12,12 @@ Function EntryPoint Alias "EntryPoint"()As Integer
 #endif
 	hInst = GetModuleHandle(0)
 	
+	' Инициализация новых элементов управления
+	Dim ctl As INITCOMMONCONTROLSEX = Any
+	ctl.dwSize = SizeOf(INITCOMMONCONTROLSEX)
+	ctl.dwICC = ICC_ANIMATE_CLASS Or ICC_BAR_CLASSES Or ICC_COOL_CLASSES Or ICC_DATE_CLASSES Or ICC_HOTKEY_CLASS Or ICC_INTERNET_CLASSES Or ICC_LINK_CLASS Or ICC_LISTVIEW_CLASSES Or ICC_NATIVEFNTCTL_CLASS Or ICC_PAGESCROLLER_CLASS Or ICC_PROGRESS_CLASS Or ICC_STANDARD_CLASSES Or ICC_TAB_CLASSES Or ICC_TREEVIEW_CLASSES Or ICC_UPDOWN_CLASS Or ICC_USEREX_CLASSES Or ICC_WIN95_CLASSES
+	InitCommonControlsEx(@ctl)
+	
 	Dim NineWindowTitle As WString * 256 = Any
 	LoadString(hInst, IDS_WINDOWTITLE, @NineWindowTitle, 255)
 	
@@ -59,7 +65,6 @@ Function EntryPoint Alias "EntryPoint"()As Integer
 		hInst, _
 		NULL)
 	
-	' ShowWindow(hWndMain, SW_NORMAL)
 	ShowWindow(hWndMain, SW_MAXIMIZE)
 	UpdateWindow(hWndMain)
 	
