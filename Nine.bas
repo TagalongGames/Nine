@@ -5,12 +5,10 @@
 
 Const MainWindowClassName = "Девятка"
 
-Dim Shared hInst As HMODULE
-
 #ifdef withoutrtl
 Function EntryPoint Alias "EntryPoint"()As Integer
 #endif
-	hInst = GetModuleHandle(0)
+	Dim hInst As HMODULE = GetModuleHandle(0)
 	
 	Dim NineWindowTitle As WString * 256 = Any
 	LoadString(hInst, IDS_WINDOWTITLE, @NineWindowTitle, 255)
