@@ -1,5 +1,5 @@
 ﻿#include once "Nine.bi"
-#include once "WndProc.bi"
+#include once "MainFormWndProc.bi"
 #include once "Nine.rh"
 #include once "IntegerToWString.bi"
 
@@ -70,7 +70,7 @@ Function WinMain( _
 	With wcls
 		.cbSize        = SizeOf(WNDCLASSEX)
 		.style         = CS_HREDRAW Or CS_VREDRAW
-		.lpfnWndProc   = @WndProc
+		.lpfnWndProc   = @MainFormWndProc
 		.cbClsExtra    = 0
 		.cbWndExtra    = 0
 		.hInstance     = hInst
