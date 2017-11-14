@@ -111,13 +111,13 @@ Function WinMain( _
 	UpdateWindow(hWndMain)
 	
 	Dim wMsg As MSG = Any
-	Dim bRet As Integer = GetMessage(@wMsg, NULL, 0, 0)
-	Do While bRet <> 0
-		If bRet = -1 Then
+	Dim GetMessageResult As Integer = GetMessage(@wMsg, NULL, 0, 0)
+	Do While GetMessageResult <> 0
+		If GetMessageResult = -1 Then
 			Dim ErrorCode As Integer = GetLastError()
 			Dim Buffer As WString * 100 = Any
 			itow(ErrorCode, @Buffer, 10)
-			MessageBox(0, @Buffer, @"Ошибка в функции GetMessage", MB_ICONERROR)
+			MessageBox(0, @Buffer, @"Error in GetMessage", MB_ICONERROR)
 			Exit Do
 		Else
 			If TranslateAccelerator(hWndMain, hAccel, @wMsg) = 0 Then
@@ -125,7 +125,7 @@ Function WinMain( _
 				DispatchMessage(@wMsg)
 			End If
 		End If
-		bRet = GetMessage(@wMsg, NULL, 0, 0)
+		GetMessageResult = GetMessage(@wMsg, NULL, 0, 0)
 	Loop
 	
 	Return wMsg.WPARAM
