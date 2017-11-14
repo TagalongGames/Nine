@@ -72,11 +72,11 @@ BEGIN
 		BEGIN
 			VALUE "FileVersion", "0.0.0.1\0"
 			VALUE "ProductVersion", "0.0.0.1\0"
-			VALUE "CompanyName", "Корпораци Сети\0"
+			VALUE "CompanyName", "Tagalong Games\0"
 			VALUE "FileDescription", "Карточная игра «Девятка»\0"
 			VALUE "InternalName", "Девятка\0"
-			VALUE "LegalCopyright", "(c) Корпорация Сети. Все права сохранены.\0"
-			VALUE "LegalTrademarks", "Корпорация Сети\0"
+			VALUE "LegalCopyright", "(c) Tagalong Games. Все права сохранены.\0"
+			VALUE "LegalTrademarks", "Tagalong Games\0"
 			VALUE "OriginalFilename", "Девятка\0"
 			VALUE "ProductName", "Карточная игра «Девятка»\0"
 		END

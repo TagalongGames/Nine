@@ -3,7 +3,7 @@
 	<assemblyIdentity
 		version="1.0.0.0"
 		processorArchitecture="*"
-		name="Корпораци Сети.Карточная игра «Девятка».Девятка"
+		name="Tagalong Games.Карточная игра «Девятка».Девятка"
 		type="win32" />
 	<description>Карточная игра «Девятка»</description>
 	<dependency>
