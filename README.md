@@ -1,5 +1,6 @@
 # Девятка
-Card game "Nine" writeen in FreeBASIC
+
+Карточная игра «Девятка», выполненная в классическом стиле Windows XP.
 
 ## Цель игры
 
