@@ -13,5 +13,5 @@
 ## Компиляция
 
 ```
-fbc.exe -x Nine.exe -s gui Nine.bas DisplayError.bas MainForm.bas MainFormWndProc.bas NetworkParamDialogProc.bas PlayerCard.bas Cards.bas Resources.rc
+fbc.exe -x Nine.exe -s gui Nine.bas Cards.bas DisplayError.bas MainForm.bas MainFormWndProc.bas NetworkParamDialogProc.bas PlayerCard.bas Registry.bas Resources.rc
 ```
