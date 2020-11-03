@@ -1,0 +1,1 @@
+"%ProgramFiles%\FreeBASIC\bin\win32\dlltool.exe" -d CARDS.def -l libcards.dll.a
