@@ -12,6 +12,14 @@
 
 ## Компиляция
 
+В 32‐битной Windows необходимо предварительно получить статическую библиотеку libcards.dll.a так:
+
+```BatchFile
+dlltool.exe -d CARDS.def -l libcards.dll.a
 ```
-fbc.exe -x Nine.exe -s gui Nine.bas Cards.bas DisplayError.bas MainForm.bas MainFormWndProc.bas NetworkParamDialogProc.bas PlayerCard.bas Registry.bas Resources.rc
+
+Компиляция:
+
+```BatchFile
+call make.cmd exe release withoutruntime
 ```
