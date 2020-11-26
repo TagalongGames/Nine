@@ -1,6 +1,4 @@
 set CompilerDirectory=%ProgramFiles%\FreeBASIC
-REM Classes\ServerState.bas
-REM Modules\ProcessDllRequest.bas
 set MainFile=Modules\EntryPoint.bas
 set Classes=
 set Modules=Modules\WinMain.bas Modules\Cards.bas Modules\DisplayError.bas Modules\MainForm.bas Modules\MainFormWndProc.bas Modules\NetworkParamDialogProc.bas Modules\PlayerCard.bas Modules\Registry.bas Modules\StatisticsDialogProc.bas
